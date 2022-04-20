@@ -88,17 +88,10 @@ class CyclePlayer(Player):
     The first move is randomized.
     """
     def move(self):
-        self.count += 1
-
-        if self.count == 1:
-            return random.choice(moves)
-
-        if self.my_move == 'rock':
-            return 'paper'
-        elif self.my_move == 'paper':
-            return 'scissors'
-        elif self.my_move == 'scissors':
-            return 'rock'
+        while True:
+            count = (self.count + 1) % 3
+            self.count += 1
+            return moves[count]
 
 
 def beats(one, two):
